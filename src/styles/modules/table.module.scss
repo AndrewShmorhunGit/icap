@@ -1,0 +1,92 @@
+@import "../themes.scss";
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+  // margin: 20px 0;
+  font-weight: 600;
+  // height: 100%;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid $bg;
+  padding: 8px 16px;
+}
+
+.table-container tr:nth-child(odd) {
+  background-color: $second;
+}
+
+.table-container tr:hover {
+  background-color: $main;
+  color: white;
+}
+
+.table-container th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $main;
+  color: white;
+}
+
+.address-hover {
+  position: relative;
+}
+
+.address-hover:hover .address-tooltip {
+  display: block;
+}
+
+.address-tooltip {
+  display: none;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 4px;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 200px;
+}
+
+.address-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.btn-action {
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  &:hover {
+    color: white;
+    // background-color: lightblue;
+    // border: 1px solid gray;
+  }
+}
+
+.btn-add {
+  padding: 1.2rem 2.4rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background: $main;
+    color: white;
+    transform: translateY(-1px);
+  }
+}
