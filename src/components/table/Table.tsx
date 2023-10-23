@@ -2,16 +2,26 @@
 import { TPerson } from "@/types";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import styles from "@/styles/modules/table.module.scss";
-import { formatDate, getAge } from "@/utils/format";
+import { formatDate } from "@/utils/format";
 import { ScrollContainer } from "./containers/ScrollContainer";
 import { useState } from "react";
 import { Pagination } from "./pagination/Pagination";
 import { ImArrowUp2, ImArrowDown2 } from "react-icons/im";
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
+import { setPersons, setModal } from "@/app/redux";
 export const Table = ({ persons }: { persons: TPerson[] }) => {
+  const dispatch = useAppDispatch();
+
+  const { persons: reduxPersons } = useAppSelector((state) => state.persons);
+
+  persons !== reduxPersons && dispatch(setPersons(persons));
+
   const [currentPage, setCurrentPage] = useState(1);
+
   const [sortDirection, setSortDirection] = useState<"asc" | "desc" | null>(
     null
   );
+
   const [sortedColumn, setSortedColumn] = useState<"name" | null>(null);
 
   const sortByName = (a: TPerson, b: TPerson) => {
@@ -23,10 +33,15 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
   };
 
   const itemsPerPage = 10;
+
   const totalPages = Math.ceil(persons.length / itemsPerPage);
+
   const startIndex = (currentPage - 1) * itemsPerPage;
+
   let sortedPersons = [...persons];
+
   if (sortedColumn === "name") sortedPersons.sort(sortByName);
+
   const currentPersons = sortedPersons.slice(
     startIndex,
     startIndex + itemsPerPage
@@ -44,7 +59,6 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
   };
 
   const handleSort = (column: "name") => {
-    // If it's a new column or if the direction was "desc", reset to "asc"
     if (sortedColumn !== column || sortDirection === "desc") {
       setSortDirection("asc");
     } else {
@@ -66,7 +80,12 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
         }}
       >
         <p>Press to add new person:</p>
-        <button className={styles["btn-add"]}>Add New</button>
+        <button
+          className={styles["btn-add"]}
+          onClick={() => dispatch(setModal({ value: "add", data: null }))}
+        >
+          Add New
+        </button>
         <p>Press to remove filters:</p>
         <button className={styles["btn-add"]} onClick={removeFilters}>
           Remove Filters
@@ -101,29 +120,37 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
             </tr>
           </thead>
           <tbody>
-            {currentPersons.map((item) => (
-              <tr key={item.id}>
-                <td style={{ maxWidth: "1rem" }}>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-                <td>{formatDate(item.birthday_date)}</td>
-                <td>{item.phone_number}</td>
+            {currentPersons.map((person) => (
+              <tr key={person.id}>
+                <td style={{ maxWidth: "1rem" }}>{person.id}</td>
+                <td>{person.name}</td>
+                <td>{person.email}</td>
+                <td>{formatDate(person.birthday_date)}</td>
+                <td>{person.phone_number}</td>
                 <td
                   style={{ maxWidth: "10rem" }}
                   className={styles["address-hover"]}
                 >
-                  {item.address.split("\n")[0]}...
+                  {person.address.split("\n")[0]}...
                   <span className={styles["address-tooltip"]}>
-                    {item.address}
+                    {person.address}
                   </span>
                 </td>
                 <td style={{ maxWidth: "6rem" }}>
-                  <button className={styles["btn-action"]}>
+                  <button
+                    className={styles["btn-action"]}
+                    onClick={() =>
+                      dispatch(setModal({ value: "edit", data: person }))
+                    }
+                  >
                     <AiFillEdit />
                   </button>
                   <button
                     className={styles["btn-action"]}
                     style={{ marginLeft: "10px" }}
+                    onClick={() =>
+                      dispatch(setModal({ value: "delete", data: person.id }))
+                    }
                   >
                     <AiOutlineDelete />
                   </button>
