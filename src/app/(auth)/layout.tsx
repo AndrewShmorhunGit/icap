@@ -12,10 +12,11 @@ export default function RootLayout({
   return (
     <div
       style={{
+        width: "100vw",
+        height: "calc(100vh - 20rem)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "lightgrey",
       }}
     >
       {children}

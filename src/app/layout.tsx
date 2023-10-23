@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AppProviders } from "@/components/app/AppProviders";
 import { AppContainer } from "@/components/app/AppContainer";
+import { Header } from "@/components/header/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <AppProviders>
-      <AppContainer>{children}</AppContainer>
+      <AppContainer>
+        <Header />
+        {children}
+      </AppContainer>
     </AppProviders>
   );
 }

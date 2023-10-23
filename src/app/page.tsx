@@ -1,12 +1,18 @@
 import styles from "@/styles/modules/home.module.scss";
+import { auth } from "@clerk/nextjs";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  const href = userId ? "/table" : "/auth";
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <h1 className={styles.title}>Welcome to the Demo App!</h1>
-        <button className={styles.getStartedButton}>Get Started</button>
-      </main>
+        <Link href={href}>
+          <button className={styles.getStartedButton}>Get Started</button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,3 @@
 export function Spinner() {
-  return <div className="spinner"></div>;
+  return <div style={{ background: "inherit" }} className="spinner"></div>;
 }
