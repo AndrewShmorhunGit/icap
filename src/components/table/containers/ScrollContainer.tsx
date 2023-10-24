@@ -5,7 +5,7 @@ export function ScrollContainer({ children }: { children: ReactNode }) {
       className="scroll-bar"
       style={{
         display: "flex",
-        height: "calc(100vh - 28rem)",
+        height: "calc(100vh - 32rem)",
         margin: "2rem 0",
         overflowY: "auto",
         paddingRight: "5px",

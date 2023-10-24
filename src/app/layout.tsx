@@ -3,6 +3,7 @@ import { AppProviders } from "@/components/app/AppProviders";
 import { AppContainer } from "@/components/app/AppContainer";
 import { Header } from "@/components/header/Header";
 import { Modal } from "@/components/modal/Modal";
+import { Footer } from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "ICAP",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Header />
 
         {children}
+        <Footer />
       </AppContainer>
     </AppProviders>
   );

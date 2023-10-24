@@ -9,6 +9,7 @@ import { Pagination } from "./pagination/Pagination";
 import { ImArrowUp2, ImArrowDown2 } from "react-icons/im";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { setPersons, setModal } from "@/app/redux";
+
 export const Table = ({ persons }: { persons: TPerson[] }) => {
   const dispatch = useAppDispatch();
   dispatch(setPersons(persons));
