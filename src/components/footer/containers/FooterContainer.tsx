@@ -13,6 +13,7 @@ export function FooterContainer({ children }: { children: ReactNode }) {
         textAlign: "center",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "flex-start",
         borderTop: "1px solid #6c757d",
       }}
     >
