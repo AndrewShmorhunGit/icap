@@ -98,7 +98,9 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
         <button onClick={incrementItemsPerPage} className={styles["btn-add"]}>
           +
         </button>
-        <p>Remove 'Name' filters:</p>
+        <p>
+          Remove <span style={{ fontWeight: "bold" }}>Name</span> filters:
+        </p>
         <button className={styles["btn-add"]} onClick={removeFilters}>
           Remove Filters
         </button>
