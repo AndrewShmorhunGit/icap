@@ -2,9 +2,7 @@
 .table-container {
   width: 100%;
   border-collapse: collapse;
-  // margin: 20px 0;
   font-weight: 600;
-  // height: 100%;
 }
 
 .table-container th,
@@ -72,8 +70,6 @@
   background-color: transparent;
   &:hover {
     color: white;
-    // background-color: lightblue;
-    // border: 1px solid gray;
   }
 }
 

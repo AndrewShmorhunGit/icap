@@ -42,7 +42,6 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  // Fix translate X for responsive design
   transform: translateX(3.2rem);
   background-color: white;
 }

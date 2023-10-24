@@ -7,7 +7,7 @@ import { ScrollContainer } from "./containers/ScrollContainer";
 import { useState } from "react";
 import { Pagination } from "./pagination/Pagination";
 import { ImArrowUp2, ImArrowDown2 } from "react-icons/im";
-import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { setPersons, setModal } from "@/app/redux";
 export const Table = ({ persons }: { persons: TPerson[] }) => {
   const dispatch = useAppDispatch();
@@ -98,7 +98,7 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
         <button onClick={incrementItemsPerPage} className={styles["btn-add"]}>
           +
         </button>
-        <p>Remove "Name" filters:</p>
+        <p>Remove 'Name' filters:</p>
         <button className={styles["btn-add"]} onClick={removeFilters}>
           Remove Filters
         </button>

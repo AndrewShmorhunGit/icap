@@ -7,15 +7,10 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   background-color: $bg;
   color: $text;
-  // &:hover {
-  //   background-color: $hover;
-  // }
+
   &.dark {
     background-color: $bg-dark;
     color: $text-dark;
-    // &:hover {
-    //   background-color: $hover-dark;
-    // }
   }
 }
 
