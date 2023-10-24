@@ -3,7 +3,9 @@ import { useRef } from "react";
 
 import styles from "@/styles/modules/modal.module.scss";
 import { TPerson } from "@/types";
-import { setModal, useAppDispatch } from "@/app/redux";
+import { setModal, useAppDispatch, useAppSelector } from "@/app/redux";
+import { httpAddPersonPOST } from "@/app/redux/actions/http/http.person.add";
+import { httpEditPersonPOST } from "@/app/redux/actions/http/http.person.edit";
 
 type FormModalProps = {
   initialData?: TPerson;
@@ -13,22 +15,23 @@ const form = styles["modal-form"];
 export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement>(null);
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Create a FormData object from the form
     if (formRef.current) {
       const formData = new FormData(formRef.current);
+      let formObject: any = {};
+      formData.forEach((value, key) => {
+        formObject[key] = value;
+      });
 
-      // To see the values:
-      // for (let pair of formData.entries()) {
-      //   console.log(pair[0]+ ', ' + pair[1]);
-      // }
+      const typedFormObject = formObject as Omit<TPerson, "id">;
+      const typedFormObjectForEdit = formObject as TPerson;
 
-      // Dispatch an action with the formData or send it to the server
-      // For now, we'll just close the modal
-      dispatch(setModal({ value: "none", data: null }));
+      initialData === undefined
+        ? dispatch(httpAddPersonPOST(typedFormObject))
+        : dispatch(httpEditPersonPOST(initialData.id, typedFormObjectForEdit)),
+        dispatch(setModal({ value: "none", data: null }));
     }
   };
 

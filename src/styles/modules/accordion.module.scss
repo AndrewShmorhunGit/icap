@@ -1,0 +1,50 @@
+@import "../themes.scss";
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-weight: 600;
+  background: $main;
+  color: white;
+  padding: 1.2rem 2.4rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px $text solid;
+  &:hover {
+    background: $second;
+    color: $text;
+  }
+}
+.accordion {
+  font-size: 1.2rem;
+  overflow: hidden;
+  // padding: 0.8rem;
+
+  &-item {
+    font-size: 1.6rem;
+    border-bottom: 1px solid grey;
+    margin-bottom: 1.2rem;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  div {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    // background: #ffffff;
+
+    p {
+      margin: 0;
+      padding: 10px 15px;
+      border-top: 1px solid #e0e0e0;
+
+      &:first-child {
+        border-top: none;
+      }
+    }
+  }
+}

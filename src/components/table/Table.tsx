@@ -11,11 +11,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { setPersons, setModal } from "@/app/redux";
 export const Table = ({ persons }: { persons: TPerson[] }) => {
   const dispatch = useAppDispatch();
-
-  const { persons: reduxPersons } = useAppSelector((state) => state.persons);
-
-  persons !== reduxPersons && dispatch(setPersons(persons));
-
+  dispatch(setPersons(persons));
   const [currentPage, setCurrentPage] = useState(1);
 
   const [sortDirection, setSortDirection] = useState<"asc" | "desc" | null>(

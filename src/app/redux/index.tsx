@@ -6,6 +6,12 @@ import {
   deletePersonStart,
   deletePersonSuccess,
   deletePersonError,
+  editPersonStart,
+  editPersonSuccess,
+  editPersonError,
+  addPersonStart,
+  addPersonSuccess,
+  addPersonError,
 } from "./reducers/persons/persons.slice";
 export { useAppSelector, useAppDispatch };
 
@@ -15,4 +21,10 @@ export {
   deletePersonStart,
   deletePersonSuccess,
   deletePersonError,
+  editPersonStart,
+  editPersonSuccess,
+  editPersonError,
+  addPersonStart,
+  addPersonSuccess,
+  addPersonError,
 };

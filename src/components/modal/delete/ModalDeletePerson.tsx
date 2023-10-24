@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "@/styles/modules/modal.module.scss";
 import { setModal, useAppDispatch, useAppSelector } from "@/app/redux";
 import { getPersonNameById } from "@/utils/functions";
-import { httpPersonDELETE } from "@/app/redux/actions/persons.delete";
+import { httpPersonDELETE } from "@/app/redux/actions/http/http.persons.delete";
 
 type ModalDeletePersonProps = {
   personId: number;

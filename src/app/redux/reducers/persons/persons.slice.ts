@@ -18,6 +18,18 @@ export const personsSlice = createSlice({
   name: "persons",
   initialState,
   reducers: {
+    addPersonStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    addPersonSuccess: (state, action: PayloadAction<TPerson>) => {
+      state.loading = false;
+      state.persons.push(action.payload);
+    },
+    addPersonError: (state, action: PayloadAction<string>) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     deletePersonStart: (state) => {
       state.loading = true;
       state.error = null;
@@ -32,6 +44,22 @@ export const personsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    editPersonStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    editPersonSuccess: (state, action: PayloadAction<TPerson>) => {
+      state.loading = false;
+      const index = state.persons.findIndex((p) => p.id === action.payload.id);
+      if (index !== -1) {
+        state.persons[index] = action.payload;
+      }
+    },
+    editPersonError: (state, action: PayloadAction<string>) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     setPersons: (state, action: PayloadAction<TPerson[]>) => {
       state.persons = action.payload;
     },
@@ -43,6 +71,12 @@ export const {
   deletePersonStart,
   deletePersonSuccess,
   deletePersonError,
+  editPersonStart,
+  editPersonSuccess,
+  editPersonError,
+  addPersonStart,
+  addPersonSuccess,
+  addPersonError,
 } = personsSlice.actions;
 
 export default personsSlice.reducer;

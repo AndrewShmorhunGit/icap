@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  gap: 4rem;
+  padding: 4rem;
+  gap: 2.4rem;
   max-height: calc(100vh - 20rem);
 }
 
@@ -20,7 +20,7 @@
 
 .getStartedButton {
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 16px;
   background-color: $main;
   color: white;
   border: none;

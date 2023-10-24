@@ -4,7 +4,7 @@ import {
   deletePersonStart,
   deletePersonSuccess,
 } from "@/app/redux";
-import { AppDispatch } from "../store";
+import { AppDispatch } from "../../store";
 
 export const httpPersonDELETE = (personId: number) => {
   return async (dispatch: AppDispatch) => {
@@ -20,7 +20,6 @@ export const httpPersonDELETE = (personId: number) => {
           },
         }
       );
-
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.message || "Could not delete person.");
