@@ -18,18 +18,31 @@ export const personsSlice = createSlice({
   name: "persons",
   initialState,
   reducers: {
+    deletePersonStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    deletePersonSuccess: (state, action: PayloadAction<number>) => {
+      state.loading = false;
+      state.persons = state.persons.filter(
+        (person) => person.id !== action.payload
+      );
+    },
+    deletePersonError: (state, action: PayloadAction<string>) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     setPersons: (state, action: PayloadAction<TPerson[]>) => {
       state.persons = action.payload;
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action: PayloadAction<string | null>) => {
-      state.error = action.payload;
     },
   },
 });
 
-export const { setPersons, setLoading, setError } = personsSlice.actions;
+export const {
+  setPersons,
+  deletePersonStart,
+  deletePersonSuccess,
+  deletePersonError,
+} = personsSlice.actions;
 
 export default personsSlice.reducer;

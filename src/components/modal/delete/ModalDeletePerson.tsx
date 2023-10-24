@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "@/styles/modules/modal.module.scss";
 import { setModal, useAppDispatch, useAppSelector } from "@/app/redux";
 import { getPersonNameById } from "@/utils/functions";
+import { httpPersonDELETE } from "@/app/redux/actions/persons.delete";
 
 type ModalDeletePersonProps = {
   personId: number;
@@ -22,15 +23,12 @@ export const ModalDeletePerson: React.FC<ModalDeletePersonProps> = ({
   };
 
   const handleDelete = () => {
-    // Dispatch action to delete person
-    // ...
-
-    // Close the modal after deletion
+    dispatch(httpPersonDELETE(personId));
     dispatch(setModal({ value: "none", data: null }));
   };
 
   return (
-    <form className={form}>
+    <div className={form}>
       <h2>Confirm Deletion</h2>
       <p>
         Please type <strong>{personName}</strong> to confirm deletion. This
@@ -56,6 +54,6 @@ export const ModalDeletePerson: React.FC<ModalDeletePersonProps> = ({
           Cancel
         </button>
       </div>
-    </form>
+    </div>
   );
 };

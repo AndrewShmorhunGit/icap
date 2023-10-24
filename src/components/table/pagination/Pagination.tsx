@@ -14,7 +14,7 @@ export function Pagination({
       >
         Previous
       </button>
-      <span>
+      <span style={{ fontSize: "1.2rem" }}>
         {currentPage} / {totalPages}
       </span>
       <button

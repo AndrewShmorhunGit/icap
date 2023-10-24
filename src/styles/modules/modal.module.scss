@@ -1,14 +1,11 @@
 .modal-form {
   max-width: 52rem;
-  // margin: 0 auto;
-  // background: #ffffff;
   padding: 2rem 3.2rem;
 
   h2 {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 1.5rem;
-    // color: #333;
     font-weight: 600;
   }
 
@@ -35,10 +32,6 @@
           border-color: #007bff;
           outline: none;
           box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-
-        &[type="phone"] {
-          // You might want to add specific styles for phone input if needed
         }
       }
     }
@@ -94,7 +87,7 @@
   text-align: center;
 
   h2 {
-    color: #ff0000; // Red color to signify danger action
+    color: #ff0000;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;

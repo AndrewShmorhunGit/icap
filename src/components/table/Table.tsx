@@ -32,7 +32,15 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
     return 0;
   };
 
-  const itemsPerPage = 10;
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  const incrementItemsPerPage = () => {
+    setItemsPerPage((prev) => Math.min(prev + 1, persons.length));
+  };
+
+  const decrementItemsPerPage = () => {
+    setItemsPerPage((prev) => Math.max(prev - 1, 1));
+  };
 
   const totalPages = Math.ceil(persons.length / itemsPerPage);
 
@@ -79,14 +87,22 @@ export const Table = ({ persons }: { persons: TPerson[] }) => {
           padding: "1rem 0",
         }}
       >
-        <p>Press to add new person:</p>
+        <p>Add new person:</p>
         <button
           className={styles["btn-add"]}
           onClick={() => dispatch(setModal({ value: "add", data: null }))}
         >
           Add New
         </button>
-        <p>Press to remove filters:</p>
+        <p>Items per page:</p>
+        <button onClick={decrementItemsPerPage} className={styles["btn-add"]}>
+          -
+        </button>
+        <span>{itemsPerPage}</span>
+        <button onClick={incrementItemsPerPage} className={styles["btn-add"]}>
+          +
+        </button>
+        <p>Remove "Name" filters:</p>
         <button className={styles["btn-add"]} onClick={removeFilters}>
           Remove Filters
         </button>

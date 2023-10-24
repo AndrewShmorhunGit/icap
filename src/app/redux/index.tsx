@@ -1,7 +1,18 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 
 import { setModal } from "../redux/reducers/modal/modal.slice";
-import { setPersons } from "./reducers/persons/persons.slice";
+import {
+  setPersons,
+  deletePersonStart,
+  deletePersonSuccess,
+  deletePersonError,
+} from "./reducers/persons/persons.slice";
 export { useAppSelector, useAppDispatch };
 
-export { setModal, setPersons };
+export {
+  setModal,
+  setPersons,
+  deletePersonStart,
+  deletePersonSuccess,
+  deletePersonError,
+};
