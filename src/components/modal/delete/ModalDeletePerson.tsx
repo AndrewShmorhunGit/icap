@@ -2,14 +2,13 @@
 import { useState } from "react";
 
 import styles from "@/styles/modules/modal.module.scss";
-import { TPerson } from "@/types";
 import { setModal, useAppDispatch, useAppSelector } from "@/app/redux";
 import { getPersonNameById } from "@/utils/functions";
 
 type ModalDeletePersonProps = {
   personId: number;
 };
-
+const form = styles["form-delete"];
 export const ModalDeletePerson: React.FC<ModalDeletePersonProps> = ({
   personId,
 }) => {
@@ -31,7 +30,7 @@ export const ModalDeletePerson: React.FC<ModalDeletePersonProps> = ({
   };
 
   return (
-    <div className={styles.modal}>
+    <form className={form}>
       <h2>Confirm Deletion</h2>
       <p>
         Please type <strong>{personName}</strong> to confirm deletion. This
@@ -57,6 +56,6 @@ export const ModalDeletePerson: React.FC<ModalDeletePersonProps> = ({
           Cancel
         </button>
       </div>
-    </div>
+    </form>
   );
 };

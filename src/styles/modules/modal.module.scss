@@ -1,19 +1,188 @@
-.modal {
+.modal-form {
+  max-width: 52rem;
+  // margin: 0 auto;
+  // background: #ffffff;
+  padding: 2rem 3.2rem;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    // color: #333;
+    font-weight: 600;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      font-weight: 500;
+
+      input {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        &[type="phone"] {
+          // You might want to add specific styles for phone input if needed
+        }
+      }
+    }
+
+    button {
+      cursor: pointer;
+      padding: 0.7rem 2rem;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &:active {
+        background-color: #004085;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.confirmButton {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.form-delete {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  h2 {
+    color: #ff0000; // Red color to signify danger action
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
   .modalActions {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-  }
+    align-items: center;
+    gap: 1rem;
 
-  .confirmButton {
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    button {
+      cursor: pointer;
+      padding: 0.7rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
 
-    &:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+      &:first-child {
+        background-color: #ff0000;
+        color: #fff;
+
+        &:hover {
+          background-color: #cc0000;
+        }
+
+        &:active {
+          background-color: #990000;
+        }
+
+        &.confirmButton {
+          background-color: #007bff;
+          color: #fff;
+
+          &:hover {
+            background-color: #0056b3;
+          }
+
+          &:active {
+            background-color: #004085;
+          }
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          color: #888;
+          cursor: not-allowed;
+        }
+      }
+
+      &:last-child {
+        background-color: #ccc;
+        color: #333;
+
+        &:hover {
+          background-color: #bbb;
+        }
+
+        &:active {
+          background-color: #aaa;
+        }
+      }
     }
   }
 }

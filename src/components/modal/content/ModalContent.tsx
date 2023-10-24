@@ -7,34 +7,34 @@ import React from "react";
 import { ModalForm } from "../form/ModalForm";
 import { TPerson } from "@/types";
 import { ModalDeletePerson } from "../delete/ModalDeletePerson";
+import { useTheme } from "@/hooks/useTheme";
 
 export function ModalContent() {
   const refClickOutside = React.useRef<HTMLDivElement | null>(null);
-  const isModal = useAppSelector((state: RootState) => state.modal);
+  const { data, value } = useAppSelector((state: RootState) => state.modal);
   const dispatch = useAppDispatch();
   useClickOutside(refClickOutside, () =>
     dispatch(setModal({ value: "none", data: null }))
   );
+  const { isLightTheme } = useTheme();
   return (
     <div
       ref={refClickOutside}
       style={{
-        width: "80rem",
+        minWidth: "42rem",
         height: "auto",
-        background: palette.bg,
+        background: isLightTheme ? palette.bg : palette.dark.bg,
+        padding: "2.4rem 2.4rem",
         cursor: "auto",
-        transform: "translate(0, -5rem)",
         position: "relative",
+        borderRadius: "1.2rem",
       }}
     >
-      {isModal.value === "delete" && isModal.data !== null && (
-        <ModalDeletePerson personId={isModal.data as number} />
-      )}
-      {(isModal.value === "add" || isModal.value === "edit") &&
-      isModal.data !== null ? (
-        <ModalForm initialData={isModal.data as TPerson} />
-      ) : (
-        <ModalForm />
+      {value === "delete" && <ModalDeletePerson personId={data as number} />}
+
+      {value === "add" && data === null && <ModalForm />}
+      {value === "edit" && data !== null && (
+        <ModalForm initialData={data as TPerson} />
       )}
     </div>
   );

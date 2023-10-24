@@ -9,6 +9,7 @@ type FormModalProps = {
   initialData?: TPerson;
 };
 
+const form = styles["modal-form"];
 export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement>(null);
@@ -32,7 +33,7 @@ export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
   };
 
   return (
-    <div className={styles.modal}>
+    <div className={form}>
       <h2>{initialData ? "Update Person" : "Add New Person"}</h2>
       <form ref={formRef} onSubmit={handleSubmit}>
         <label>
@@ -58,16 +59,7 @@ export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
           <input
             type="text"
             name="birthday"
-            defaultValue={initialData?.birthday_date || ""}
-            required
-          />
-        </label>
-        <label>
-          Birthday Date:
-          <input
-            type="text"
-            name="birthday"
-            defaultValue={initialData?.birthday_date || ""}
+            defaultValue={initialData?.birthday_date || "31-12-99"}
             required
           />
         </label>
@@ -76,7 +68,7 @@ export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
           <input
             type="phone"
             name="phone"
-            defaultValue={initialData?.phone_number || ""}
+            defaultValue={initialData?.phone_number || "+380"}
             required
           />
         </label>
@@ -90,10 +82,12 @@ export const ModalForm: React.FC<FormModalProps> = ({ initialData }) => {
           />
         </label>
         <button type="submit">{initialData ? "Update" : "Add"}</button>
+        <button
+          onClick={() => dispatch(setModal({ value: "none", data: null }))}
+        >
+          Close
+        </button>
       </form>
-      <button onClick={() => dispatch(setModal({ value: "none", data: null }))}>
-        Close
-      </button>
     </div>
   );
 };
